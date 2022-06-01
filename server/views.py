@@ -28,8 +28,16 @@ def getOneRecipe(id):
 
      return recipe
 
+
+@api_view(['GET'])
+def detail(request, id, format=None):
+     recipe = getOneRecipe(id)
+     serializer = RecipeSerializer(recipe)
+     return Response(serializer.data)
+
+
 @api_view(['GET', 'PUT', 'DELETE'])
-def recipe(request, id, format=None):
+def edit(request, id, format=None):
      recipe = getOneRecipe(id)
      
      if request.method == 'GET':
@@ -41,6 +49,15 @@ def recipe(request, id, format=None):
                serializer.save()
                return Response(serializer.data)
           return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['GET', 'DELETE'])
+def delete(request, id, format=None):
+     recipe = getOneRecipe(id)
+     
+     if request.method == 'GET':
+          serializer = RecipeSerializer(recipe)
+          return Response(serializer.data)
      elif request.method == 'DELETE':
           recipe.delete()
           return Response(status=status.HTTP_204_NO_CONTENT)

@@ -4,8 +4,10 @@ from rest_framework.urlpatterns import format_suffix_patterns
 
 urlpatterns=[
      path('recipes', views.index),
-     path('createRecipe/', views.create),
-     path('recipe/<int:id>', views.recipe),
+     path('add/', views.create),
+     path('detail/<int:id>', views.detail),
+     path('edit/<int:id>', views.edit),
+     path('delete/<int:id>', views.delete),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
