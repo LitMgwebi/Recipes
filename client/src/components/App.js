@@ -28,10 +28,10 @@ const App = props => {
                     </navbar>
                     <Routes>
                          <Route path="/" element={<HomePage />} />
-                         <Route path="/list" element={<List />} />
-                         <Route path="/delete" element={<Delete />} />
-                         <Route path="/detail" element={<Detail />} />
-                         <Route path="/update" element={<Update />} />
+                         <Route path="/list" index element={<List />} />
+                         <Route path="/delete/:id" element={<Delete />} />
+                         <Route path="/detail/:id" element={<Detail />} />
+                         <Route path="/update/:id" element={<Update />} />
                          <Route path="/create" element={<Create />} />
                     </Routes>
                </div>
